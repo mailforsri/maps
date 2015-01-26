@@ -1,95 +1,49 @@
+
 <html>
-    <head>
-     <title>Place Autocomplete</title>
+  <head>
+    <title>Place Autocomplete Address Form</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-      .controls {
-        margin-top: 16px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
+  
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+      <link type="text/css" rel="stylesheet" href="Maps.css">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+  
+      <script src="Maps.js"></script>
+  </head>
 
-      #pac-input {
-        background-color: #fff;
-        padding: 0 11px 0 13px;
-        width: 400px;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        text-overflow: ellipsis;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-        margin-left: -1px;
-        padding-left: 14px;  /* Regular padding-left + 1. */
-        width: 401px;
-      }
-
-      .pac-container {
-        font-family: Roboto;
-      }
-
-      #type-selector {
-        color: #fff;
-        background-color: #4d90fe;
-        padding: 5px 11px 0px 11px;
-      }
-
-      #type-selector label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-}
-
-    </style>
- 
-        <script type="text/javascript" src="Maps.js"></script>
-    </head>
-    <body>
-      <pre>  Maps api comparison tool
-        We will have widgets pulling data from different maps api
-        Here are some of the options 
-        1) Google place api 
-        2) Here maps api 
-        3) Mapquest api widget
-        We will be using gridster,jquery, google api,solr and tomcat for this application. Code will be stored in git.
-        
-     V1
-        Google place javascript api 
-     V2 
-        Gridster widget of google api
-     V3
-        Here maps api use
-        
-    </pre>
-       <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location">
-    <div id="type-selector" class="controls">
-      <input type="radio" name="type" id="changetype-all" checked="checked">
-      <label for="changetype-all">All</label>
-
-      <input type="radio" name="type" id="changetype-establishment">
-      <label for="changetype-establishment">Establishments</label>
-
-      <input type="radio" name="type" id="changetype-address">
-      <label for="changetype-address">Addresses</label>
-
-      <input type="radio" name="type" id="changetype-geocode">
-      <label for="changetype-geocode">Geocodes</label>
+  <body onload="initialize()">
+    <div id="locationField">
+      <input id="autocomplete" placeholder="Enter your address"
+             onFocus="geolocate()" type="text"></input>
     </div>
-        <div id="map-canvas"></div>
-    </body>
+
+    <table id="address">
+      <tr>
+        <td class="label">Street address</td>
+        <td class="slimField"><input class="field" id="street_number"
+              disabled="true"></input></td>
+        <td class="wideField" colspan="2"><input class="field" id="route"
+              disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">City</td>
+        <td class="wideField" colspan="3"><input class="field" id="locality"
+              disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">State</td>
+        <td class="slimField"><input class="field"
+              id="administrative_area_level_1" disabled="true"></input></td>
+        <td class="label">Zip code</td>
+        <td class="wideField"><input class="field" id="postal_code"
+              disabled="true"></input></td>
+      </tr>
+      <tr>
+        <td class="label">Country</td>
+        <td class="wideField" colspan="3"><input class="field"
+              id="country" disabled="true"></input></td>
+      </tr>
+    </table>
+  </body>
 </html>
