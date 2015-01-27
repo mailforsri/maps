@@ -1,14 +1,16 @@
-// This example displays an address form, using the autocomplete feature
-// of the Google Places API to help users fill in the information.
+// Google api text search
 
-var placeSearch, searchBox;
+var searchBox;
 
 
 function initialize() {
 
+
+  // SearchBox api to do text search
   searchBox = new google.maps.places.SearchBox(
-      /** @type {HTMLInputElement} */(document.getElementById('searchBox')));//,
-   
+      /** @type {HTMLInputElement} */(document.getElementById('searchBox')));
+
+    // add event listener to display the addresses when place is selected
   google.maps.event.addListener(searchBox, 'places_changed', function() {
     displayAddress();
   });
@@ -19,8 +21,7 @@ function displayAddress() {
   // Get the place details from the autocomplete object.
   var places = searchBox.getPlaces();
 
-  // Get each component of the address from the place details
-  // and fill the corresponding field on the form.
+ // Loop through the places and display the results
   for (var i = 0; i < places.length; i++) {
     var name = places[i].name;
     var address = places[i].formatted_address;
@@ -30,5 +31,5 @@ function displayAddress() {
   }
 }
 
-
+// add the initialize to window load event
 google.maps.event.addDomListener(window, 'load', initialize);
