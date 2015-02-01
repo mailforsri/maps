@@ -14,6 +14,12 @@ function initialize() {
   google.maps.event.addListener(searchBox, 'places_changed', function() {
     displayAddress();
   });
+
+   //   $("searchBox").click(function(){
+     // $.ajax({url: "demo_test.txt", success: function(result){
+       // $("#div1").html(result);
+    //  }});
+    //});
 }
 
 
